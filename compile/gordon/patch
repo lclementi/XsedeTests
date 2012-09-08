@@ -1,0 +1,12 @@
+diff -ur NAMD_2.9_Source.orig/arch/Linux-x86_64.fftw3 NAMD_2.9_Source/arch/Linux-x86_64.fftw3
+--- NAMD_2.9_Source.orig/arch/Linux-x86_64.fftw3	2011-07-12 11:23:09.000000000 -0700
++++ NAMD_2.9_Source/arch/Linux-x86_64.fftw3	2012-09-07 19:03:01.000000000 -0700
+@@ -1,7 +1,7 @@
+ 
+ FFTDIR=$(HOME)/fftw3
+ FFTINCL=-I$(FFTDIR)/include
+-FFTLIB=-L$(FFTDIR)/lib -lfftw3f
++FFTLIB=-L$(FFTDIR)/lib -lfftw3
+ FFTFLAGS=-DNAMD_FFTW -DNAMD_FFTW_3
+ FFT=$(FFTINCL) $(FFTFLAGS)
+ 
