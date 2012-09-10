@@ -48,8 +48,8 @@ build: getSource build-fftw
 	)
 
 getSource: 
-	tar zxf ../../apps/namd/$(SOURCE).$(EXT)
-	tar zxf ../../apps/namd/tiny.tar.gz
+	tar zxf ../../../apps/namd/$(SOURCE).$(EXT)
+	tar zxf ../../../apps/namd/tiny.tar.gz
 	#cd patch-files && find . -type f | grep -v CVS | cpio -pduv ../
 	cd $(SOURCE) && tar xf charm-$(CHARMVER).tar
 	#patch -p0 < patch
@@ -61,7 +61,7 @@ build-fftw: getSource-fftw
 	cd $(FFTW); $(MODULE_LOAD); make -j4; make install
 
 getSource-fftw:
-	tar -xvzf ../../apps/namd/$(FFTW).tar.gz
+	tar -xvzf ../../../apps/namd/$(FFTW).tar.gz
 
 
 install: build
