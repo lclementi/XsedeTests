@@ -21,6 +21,6 @@ cd $PBS_O_WORKDIR
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 
 
-mpirun_rsh -np 8 -hostfile $PBS_NODEFILE ../bin/bin/apbs apbs-mol.in > apbs-mol.out
+mpirun_rsh -np 8 -hostfile $PBS_NODEFILE ../bin/bin/apbs apbs-mol-parallel.in 
 
 
