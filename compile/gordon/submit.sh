@@ -19,6 +19,7 @@ apps="apbs namd"
 
 
 function failure(){
+    echo we have a failure
     echo -n `date` - ERROR >> tmplog
     if [ "$1" == 'y' ];then 
         echo -n " verification " >> tmplog
@@ -45,6 +46,9 @@ module load openmpi_ib
 
 FILELOG=`hostname`.`date +%m%d%H%M%Y`.log
 
+#fingerprint -c -f namd2.swirl -l namdFile
+#fingerprint -c -f apbs2.swirl -l apbsFile
+
 #verify
 for i in $apps; do
     echo Verify $i >> $FILELOG
@@ -54,12 +58,12 @@ for i in $apps; do
 done
 
 
-VERIFY_LIBS="/usr/lib64/libibumad.so.3.0.2 /usr/lib64/libibverbs.so.1.0.0 /usr/lib64/librdmacm.so.1.0.0"
-
-for i in $VERIFY_LIBS;
-do
-	prelink --verify --md5 $i >> $FILELOG
-	cp $i .
-done
-
+#VERIFY_LIBS="/usr/lib64/libibumad.so.3.0.2 /usr/lib64/libibverbs.so.1.0.0 /usr/lib64/librdmacm.so.1.0.0"
+#
+#for i in $VERIFY_LIBS;
+#do
+#	prelink --verify --md5 $i >> $FILELOG
+#	cp $i .
+#done
+#
 
