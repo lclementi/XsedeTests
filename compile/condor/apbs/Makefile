@@ -8,14 +8,12 @@
 SOURCE = APBS-1.4-source
 APBSDIR = APBS-1.4
 EXT = tar.gz
-FFTW=fftw-3.3.2
 
 MPICH2_DIR = /apps/rhel5/mpich2-1.4.1p1/64/nemesis-intel-12.1
-MODULE_LOAD = module load mvapich2_ib;\
-           module load intel; module load fftw; \
-           export CC=icc F77=ifort LDFLAGS=" -L$(MPICH2_DIR)/lib/ -lmpl"
 
-FFTW_PATH = $(CURDIR)/fftwbin
+MODULE_LOAD = module load mpich2/1.4.1p1_intel-12.1 ;\
+           module load intel/12.1 ;\
+           export CC=icc F77=ifort LDFLAGS=" -L$(MPICH2_DIR)/lib/ -lmpl"
 
 #intel compiler
 FCC = ifort
@@ -30,7 +28,7 @@ default: install
 
 install: build
 	mkdir -p $(CURDIR)/bin
-	cd $(APBSDIR); make install
+	cd $(APBSDIR); $(MODULE_LOAD); make install
 
 
 
