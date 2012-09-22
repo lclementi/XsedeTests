@@ -1,16 +1,9 @@
 #!/bin/bash
-#PBS -q normal
-#PBS -l nodes=gcn-4-73
-###PBS -l nodes=1:ppn=8:native
-#PBS -l walltime=00:03:00
-#PBS -N testFingerPrintCompute
-#PBS -o output
-#PBS -e error
-#PBS -A sds138
-#PBS -M clem@sdsc.edu
-#PBS -m abe
-#PBS -V
-# Start of user commands - comments start with a hash sign (#)
+
+
+. /etc/profile
+cat /home/ba01/u102/clementi/.bashrc 
+
 
 echo Runing on `hostname`
 date
@@ -47,7 +40,6 @@ FILELOG=`hostname`.`date +%m%d%H%M%Y`.log
 
 #verify
 for i in $apps; do
-    module load $i
     echo Verify $i >> $FILELOG
     fingerprint -y -v -s $i.csv -f $i.swirl >> $FILELOG || failure y $i
     echo Integrity $i >> $FILELOG
