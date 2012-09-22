@@ -1,0 +1,19 @@
+####################
+#
+# Example 2
+# Demonstrate use of multiple directories for data organization
+#
+####################
+
+universe   = VANILLA
+executable = submit_condor.sh
+#input      = namd.swirl
+output     = log.out
+error      = log.error
+log        = log.log
++TGProject = "TG-CCR120041"
+requirements = ( UidDomain == "rcac.purdue.edu" )
+
+#initialdir = run_1
+queue
+
