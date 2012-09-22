@@ -1,0 +1,6 @@
+namd/bin/
+namd/bin/charmrun
+namd/bin/flipbinpdb
+namd/bin/flipdcd
+namd/bin/namd2
+namd/bin/psfgen
