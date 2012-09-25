@@ -46,8 +46,8 @@ module load openmpi_ib
 
 FILELOG=`hostname`.`date +%m%d%H%M%Y`.log
 
-fingerprint -c -f namd2.swirl -l namdFile
-fingerprint -c -f apbs2.swirl -l apbsFile
+#fingerprint -c -f namd2.swirl -l namdFile
+#fingerprint -c -f apbs2.swirl -l apbsFile
 
 #verify
 for i in $apps; do
