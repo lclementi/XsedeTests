@@ -41,6 +41,8 @@ export PATH=/usr/sbin:$PATH
 
 FILELOG=`hostname`.`date +%m%d%H%M%Y`.log
 
+#create
+
 #verify
 for i in $apps; do
     echo Verify $i >> $FILELOG
@@ -50,4 +52,6 @@ for i in $apps; do
 done
 
 
-
+for i in "libgcc glibc libstdc++";do
+    rpm -q $i
+done
