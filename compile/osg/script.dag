@@ -1,0 +1,21 @@
+####################
+#
+# Example 2
+# Demonstrate use of multiple directories for data organization
+#
+####################
+
+universe   = VANILLA
+executable = submit_condor.sh
+output     = log.out
+error      = log.error
+log        = log.log
++ProjectName = "TG-CCR120041"
+
+#file system no shared file system
+#input      =
+transfer_input_files = /home/clem/FingerPrint, apbs.swirl, autodock.swirl, apbs.csv, autodock.csv
+
+#initialdir = run_1
+queue
+
