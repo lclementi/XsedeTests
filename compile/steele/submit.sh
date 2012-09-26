@@ -1,5 +1,6 @@
 #!/bin/bash
-#PBS -q tg_short
+###PBS -q tg_short
+#PBS -q standby-8
 ###PBS -l nodes=gcn-4-73
 ##PBS -l nodes=1:ppn=8:native
 #PBS -l nodes=1
@@ -38,8 +39,7 @@ function failure(){
 }
 
 
-
-cd /scratch/scratch95/c/clementi/XsedeTests/compile/condor
+cd /scratch/scratch95/c/clementi/XsedeTests/compile/steele
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/namd/fftwbin/lib/
 
 module load mpich2/1.4.1p1_intel-12.1 
