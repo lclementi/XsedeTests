@@ -4,7 +4,7 @@
 ###PBS -l nodes=gcn-4-73
 ##PBS -l nodes=1:ppn=8:native
 #PBS -l nodes=1
-#PBS -l walltime=00:03:00
+#PBS -l walltime=00:15:00
 #PBS -N testFingerPrintCompute
 #PBS -o output
 #PBS -e error
@@ -27,6 +27,8 @@ function failure(){
         echo -n " verification " >> tmplog
     elif [ "$1" == "i" ];then
         echo -n " integrity " >> tmplog 
+    elif [ "$1" == "t" ];then
+        echo -n " test " >> tmplog
     fi
     echo >>tmplog
     echo Hostname `hostname` >>tmplog 
@@ -60,6 +62,12 @@ for i in $apps; do
     fingerprint -i -v -s $i.csv -f $i.swirl >> $FILELOG || failure i $i
 done
 
+#let's run the test script
+for i in $apps; do
+    cd $i/test
+    ./test.sh || failure t  $i
+    cd -
+done 
 
 #VERIFY_LIBS="/usr/lib64/libibumad.so.3.0.2 /usr/lib64/libibverbs.so.1.0.0 /usr/lib64/librdmacm.so.1.0.0"
 #
