@@ -63,11 +63,11 @@ for i in $apps; do
 done
 
 #let's run the test script
-for i in $apps; do
-    cd $i/test
-    ./test.sh || failure t  $i
-    cd -
-done 
+#for i in $apps; do
+#    cd $i/test
+#    ./test.sh || failure t  $i
+#    cd -
+#done 
 
 #VERIFY_LIBS="/usr/lib64/libibumad.so.3.0.2 /usr/lib64/libibverbs.so.1.0.0 /usr/lib64/librdmacm.so.1.0.0"
 #
