@@ -1,10 +1,11 @@
 #!/bin/bash
 ###PBS -q tg_short
+###PBS -q tg_debug
 #PBS -q standby-8
 ###PBS -l nodes=gcn-4-73
 ##PBS -l nodes=1:ppn=8:native
 #PBS -l nodes=1
-#PBS -l walltime=00:15:00
+#PBS -l walltime=00:14:00
 #PBS -N testFingerPrintCompute
 #PBS -o output
 #PBS -e error
@@ -40,6 +41,7 @@ function failure(){
     #rm error
 }
 
+export PATH=/usr/sbin:$PATH:/home/clementi/FingerPrint/bin
 
 cd /scratch/scratch95/c/clementi/XsedeTests/compile/steele
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/namd/fftwbin/lib/
