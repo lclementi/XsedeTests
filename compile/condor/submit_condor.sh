@@ -2,7 +2,7 @@
 
 
 . /etc/profile
-cat /home/ba01/u102/clementi/.bashrc 
+. /home/ba01/u102/clementi/.bashrc 
 
 
 echo Runing on `hostname`
@@ -18,6 +18,7 @@ function failure(){
     elif [ "$1" == "i" ];then
         echo -n " integrity " >> tmplog 
     fi
+    echo $2 >> tmplog
     echo >>tmplog
     echo Hostname `hostname` >>tmplog 
     #cat error >> tmplog
@@ -31,12 +32,16 @@ function failure(){
 
 
 cd /scratch/scratch95/c/clementi/XsedeTests/compile/condor
-
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/namd/fftwbin/lib/
 
 module load mpich2/1.4.1p1_intel-12.1 
 module load intel/12.1 
 
+export PATH=/usr/sbin:$PATH
+
 FILELOG=`hostname`.`date +%m%d%H%M%Y`.log
+
+#create
 
 #verify
 for i in $apps; do
@@ -47,4 +52,6 @@ for i in $apps; do
 done
 
 
-
+for i in "libgcc glibc libstdc++";do
+    rpm -q $i
+done
