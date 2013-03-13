@@ -17,12 +17,11 @@ date
 email="clem@sdsc.edu"
 
 
-
-cd /oasis/scratch/clem/temp_project/XsedeTests/compile/gordon
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/namd/fftwbin/lib/
+cd /oasis/scratch/clem/temp_project/XsedeTests/compile/gordon/namd
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/fftwbin/lib/
 
 
 cd tiny
-mpirun_rsh -np 8 -hostfile $PBS_NODEFILE ./../namd/bin/namd2 tiny.namd
+mpirun_rsh -np 8 -hostfile $PBS_NODEFILE ./../bin/namd2 tiny.namd
 
 
