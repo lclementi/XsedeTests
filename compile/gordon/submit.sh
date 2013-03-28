@@ -17,6 +17,7 @@ date
 email="clem@sdsc.edu"
 apps="apbs namd"
 
+FILELOG=`hostname`.`date +%m%d%H%M%Y`.log
 
 function failure(){
     echo we have a failure
@@ -32,6 +33,7 @@ function failure(){
     echo >> tmplog
     cat tmplog | mail -s "error `hostname`" $email
     #cat tmplog >> log
+    cat tmplog >> $FILELOG
     rm tmplog
     #rm error
 }
@@ -44,7 +46,6 @@ cd /oasis/scratch/clem/temp_project/XsedeTests/compile/gordon
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/namd/fftwbin/lib/
 module load openmpi_ib
 
-FILELOG=`hostname`.`date +%m%d%H%M%Y`.log
 
 #fingerprint -c -f namd2.swirl -l namdFile
 #fingerprint -c -f apbs2.swirl -l apbsFile
@@ -54,7 +55,7 @@ for i in $apps; do
     echo Verify $i >> $FILELOG
     fingerprint -y -v -s $i.csv -f $i.swirl >> $FILELOG || failure y $i
     echo Integrity $i >> $FILELOG
-    fingerprint -i -v -s $i.csv -f $i.swirl >> $FILELOG || failure i $i
+    fingerprint -yi -v -s $i.csv -f $i.swirl >> $FILELOG || failure i $i
 done
 
 
