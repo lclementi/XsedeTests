@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -q normal
 ###PBS -l nodes=gcn-4-73
-#PBS -l nodes=1:ppn=8:native
+#PBS -l nodes=1:ppn=1:native
 #PBS -l walltime=00:03:00
 #PBS -N testFingerPrintCompute
 #PBS -o output

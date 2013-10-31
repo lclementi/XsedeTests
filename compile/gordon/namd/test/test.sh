@@ -2,7 +2,7 @@
 #PBS -q normal
 #PBS -l nodes=gcn-4-73
 ###PBS -l nodes=1:ppn=8:native
-#PBS -l walltime=00:03:00
+#PBS -l walltime=00:15:00
 #PBS -N testFingerPrintCompute
 #PBS -o output
 #PBS -e error
@@ -22,6 +22,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/fftwbin/lib/
 
 
 cd tiny
-mpirun_rsh -np 8 -hostfile $PBS_NODEFILE ./../bin/namd2 tiny.namd
+fingerprint -c -x "mpirun_rsh -np 8 -hostfile $PBS_NODEFILE ./../bin/namd2 tiny.namd"
 
 

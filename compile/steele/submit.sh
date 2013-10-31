@@ -61,7 +61,7 @@ for i in $apps; do
     echo Verify $i >> $FILELOG
     fingerprint -y -v -s $i.csv -f $i.swirl >> $FILELOG || failure y $i
     echo Integrity $i >> $FILELOG
-    fingerprint -i -v -s $i.csv -f $i.swirl >> $FILELOG || failure i $i
+    fingerprint -yi -v -s $i.csv -f $i.swirl >> $FILELOG || failure i $i
 done
 
 #let's run the test script
